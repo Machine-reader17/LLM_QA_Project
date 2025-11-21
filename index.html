@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Q&A System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🤖 LLM Question-and-Answering System</h1>
+
+        <form method="POST" action="/">
+            <label for="question">Enter your question:</label>
+            <textarea id="question" name="question" rows="4" required>{{ user_question }}</textarea>
+            <button type="submit">Get Answer</button>
+        </form>
+
+        <hr>
+
+        <h2>Results</h2>
+
+        <div class="result-box">
+            <h3>Question Entered:</h3>
+            <p>{{ user_question if user_question else 'N/A' }}</p>
+        </div>
+
+        <div class="result-box">
+            <h3>Processed Question:</h3>
+            <p class="processed-text">{{ processed_question if processed_question else 'N/A' }}</p>
+        </div>
+
+        <div class="result-box answer-box">
+            <h3>LLM API Response:</h3>
+            <pre>{{ llm_response }}</pre>
+        </div>
+        
+    </div>
+</body>
+</html>
